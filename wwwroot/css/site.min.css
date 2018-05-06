@@ -1,13 +1,24 @@
 body{
     padding-top:50px;
-    padding-bottom:20px
+    padding-bottom:20px;
+    background-image: url('../../images/background.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
 }
 
 .body-content{
     padding-left:15px;
-    padding-right:15px
+    padding-right:15px;
+    background-color: white;
+    
 }
-
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+.nav.navbar-brand{
+    color: white !important;
+}
 
 .carousel-caption p{
     font-size:20px;
