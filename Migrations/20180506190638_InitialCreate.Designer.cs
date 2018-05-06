@@ -11,8 +11,8 @@ using System;
 namespace BuffteksWebsite.Migrations
 {
     [DbContext(typeof(BuffteksWebsiteContext))]
-    [Migration("20180430165301_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20180506190638_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

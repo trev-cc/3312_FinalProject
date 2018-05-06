@@ -23,8 +23,8 @@ namespace BuffteksWebsite.Models
                 var clients = new List<Client>
                 {
                     new Client { FirstName="Greg", LastName="Rule", CompanyName="ACME", Email="grule@acme.com", Phone="555-555-5555" },
-                    new Client { FirstName="Kristy", LastName="Miles", CompanyName="World Wide Industries", Email="kmiles@wwi.com", Phone="555-555-5555" },
-                    new Client { FirstName="Shelley", LastName="Walker", CompanyName="Big Money Inc", Email="swalker@bigmoneyinc.com", Phone="555-555-5555" }
+                    new Client { FirstName="Sundar", LastName="Pichai", CompanyName="Google", Email="spichai@google.com", Phone="555-555-5555" },
+                    new Client { FirstName="David", LastName="Terry", CompanyName="ChopChop", Email="davidterry@chopchoprice.com", Phone="555-555-5555" }
                 };
                 context.AddRange(clients);
                 context.SaveChanges();
@@ -40,12 +40,12 @@ namespace BuffteksWebsite.Models
                 var members = new List<Member>
                 {
                     new Member { FirstName="Trevor", LastName="Fleeman", Major="CIS", Email="tefleeman1@buffs.wtamu.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Pete", LastName="Perez", Major="CIS", Email="pperez@buffs.wtamu.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Flora", LastName="Williamson", Major="CIS", Email="fwiliamson@buffs.wtamu.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Laverne", LastName="Wolfe", Major="CIS", Email="lwolfe@buffs.wtamu.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Delia", LastName="Bridges", Major="CIS", Email="dbridges@buffs.wtamu.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Rebecca", LastName="Morton", Major="CIS", Email="rmorton@buffs.wtamu.edu", Phone="555-555-5555" },
-                    new Member { FirstName="Franklin", LastName="Arnold", Major="CIS", Email="farnold@buffs.wtamu.edu", Phone="555-555-5555" }
+                    new Member { FirstName="Kiki", LastName="Alonzo", Major="CIS", Email="aalonzo1@buffs.wtamu.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Dymell", LastName="Jones", Major="CIS", Email="djones1@buffs.wtamu.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Brett", LastName="Ponder", Major="CIS", Email="tveith1@buffs.wtamu.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Ian", LastName="Bilek", Major="CIS", Email="ibilek1@buffs.wtamu.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Gabby", LastName="Ashely", Major="CIS", Email="gashely@buffs.wtamu.edu", Phone="555-555-5555" },
+                    new Member { FirstName="Amy", LastName="noidea", Major="CIS", Email="anoidea1@buffs.wtamu.edu", Phone="555-555-5555" }
                 };
                 context.AddRange(members);
                 context.SaveChanges();
@@ -59,9 +59,9 @@ namespace BuffteksWebsite.Models
 
                 var projects = new List<Project>
                 {
-                    new Project { ProjectName="The Big One", ProjectDescription="The One Project to rule them all" },
+                    new Project { ProjectName="Chop Chop", ProjectDescription="The main project for 2018/2019 year" },
                     new Project { ProjectName="Awesome", ProjectDescription="This project is awesome" },
-                    new Project { ProjectName="Easy Project", ProjectDescription="This project is so easy, it completes itself" }
+                    new Project { ProjectName="Beginners", ProjectDescription="This project is to help beginners establish their skill base for reference when working with BuffTeks" }
                 };
                 context.AddRange(projects);
                 context.SaveChanges();
