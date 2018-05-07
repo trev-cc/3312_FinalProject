@@ -54,6 +54,7 @@ namespace BuffteksWebsite.Controllers
                 where project.ID == projectparticipant.ProjectID                
                 select participant;
 
+
             ProjectDetailViewModel pdvm = new ProjectDetailViewModel
             {
                 TheProject = project,
@@ -180,22 +181,39 @@ namespace BuffteksWebsite.Controllers
             //pull 'em into lists first
             var members = await _context.Members.ToListAsync();
 
-            /*
-            var uniquemembers = 
-                from participant in members
-                join projectparticipant in projectroster
+            
+            // var uniquemembers = 
+            //     from participant in members
+            //     join projectparticipant in projectroster
+            //     on participant.ID equals projectparticipant.ProjectParticipantID
+            //     where participant.ID != projectparticipant.ProjectParticipantID
+            //     select participant;
+
+            var membersOnProject = 
+                from participant in _context.Members
+                join projectparticipant in _context.ProjectRoster
                 on participant.ID equals projectparticipant.ProjectParticipantID
-                where participant.ID != projectparticipant.ProjectParticipantID
-                select participant;    
-            */                
+                where project.ID == projectparticipant.ProjectID                
+                select participant;
+
+            var allMembers = 
+                from participant in _context.Members
+                select participant; 
+
+            var allMemebersList = allMembers.ToList();
+            var membersOnProjectList = membersOnProject.ToList();     
+
+            var memebersNotOnProject = allMemebersList.Except(membersOnProjectList).ToList();
+                            
 
             List<SelectListItem> membersSelectList = new List<SelectListItem>();
 
-            foreach(var member in members)
+
+            foreach(var member in memebersNotOnProject)
             {
                 membersSelectList.Add(new SelectListItem { Value=member.ID, Text = member.FirstName + " " + member.LastName});
             }
-
+                
             //create and prepare ViewModel
             EditProjectDetailViewModel epdvm = new EditProjectDetailViewModel
             {
@@ -207,6 +225,24 @@ namespace BuffteksWebsite.Controllers
 
             return View(epdvm);
         }        
+
+        [HttpPost, ActionName("EditProjectParticipants")]
+        [ValidateAntiForgeryToken]
+
+        
+        // public async Task<IActionResult> AddComfirmed(string id)
+        // {
+        //     // var member = await _context.Members.SingleOrDefaultAsync(m => m.ID == id);
+        //     //     if (member == null)
+        //     //     {
+        //     //         return NotFound();
+        //     //     }
+        //     //     return member.ID;
+        //     // var participant = AddProjectParticipants.SelectListItem();
+        //     // _context.ProjectRoster.Add(participant);
+        //     // await _context.SaveChangesAsync();
+        //     // return RedirectToAction(nameof(Index));
+        // }
 
         // GET: Projects/Delete/5
         public async Task<IActionResult> Delete(string id)
