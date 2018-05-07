@@ -216,23 +216,13 @@ namespace BuffteksWebsite.Controllers
         [ValidateAntiForgeryToken]
 
         
-        public async Task<IActionResult> EditProjectParticipants(string id, ParticipantAddViewModel model)
+        public async Task<IActionResult> AddConfirmed(EditProjectDetailViewModel model)
         {
-            var member = await _context.Members.SingleOrDefaultAsync(m => m.ID == id);
-                if (member == null)
-                {
-                    return NotFound();
-                }
-                return member.ID;
-            var participant = AddProjectParticipants.SelectListItem();
-            _context.ProjectRoster.Add(participant);
+            var participant = await _context.Members.SingleOrDefaultAsync(m => m.ID == model.SelectedID);
+            _context.Members.Add(participant);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-
-            ParticipantAddViewModel epdvm = new ParticipantAddViewModel
-            {
-
-            };
+ 
         }
 
         
