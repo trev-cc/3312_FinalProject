@@ -161,14 +161,6 @@ namespace BuffteksWebsite.Controllers
             var clients = await _context.Clients.ToListAsync();
             var projectroster = await _context.ProjectRoster.ToListAsync();
 
-            /*
-            var uniqueclients = 
-                from participant in clients
-                join projectparticipant in projectroster
-                on participant.ID equals projectparticipant.ProjectParticipantID
-                where participant.ID != projectparticipant.ProjectParticipantID
-                select participant;
-            */                
 
             List<SelectListItem> clientsSelectList = new List<SelectListItem>();
 
@@ -182,12 +174,6 @@ namespace BuffteksWebsite.Controllers
             var members = await _context.Members.ToListAsync();
 
             
-            // var uniquemembers = 
-            //     from participant in members
-            //     join projectparticipant in projectroster
-            //     on participant.ID equals projectparticipant.ProjectParticipantID
-            //     where participant.ID != projectparticipant.ProjectParticipantID
-            //     select participant;
 
             var membersOnProject = 
                 from participant in _context.Members
@@ -230,19 +216,26 @@ namespace BuffteksWebsite.Controllers
         [ValidateAntiForgeryToken]
 
         
-        // public async Task<IActionResult> AddComfirmed(string id)
-        // {
-        //     // var member = await _context.Members.SingleOrDefaultAsync(m => m.ID == id);
-        //     //     if (member == null)
-        //     //     {
-        //     //         return NotFound();
-        //     //     }
-        //     //     return member.ID;
-        //     // var participant = AddProjectParticipants.SelectListItem();
-        //     // _context.ProjectRoster.Add(participant);
-        //     // await _context.SaveChangesAsync();
-        //     // return RedirectToAction(nameof(Index));
-        // }
+        public async Task<IActionResult> EditProjectParticipants(string id, ParticipantAddViewModel model)
+        {
+            var member = await _context.Members.SingleOrDefaultAsync(m => m.ID == id);
+                if (member == null)
+                {
+                    return NotFound();
+                }
+                return member.ID;
+            var participant = AddProjectParticipants.SelectListItem();
+            _context.ProjectRoster.Add(participant);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+            ParticipantAddViewModel epdvm = new ParticipantAddViewModel
+            {
+
+            };
+        }
+
+        
 
         // GET: Projects/Delete/5
         public async Task<IActionResult> Delete(string id)

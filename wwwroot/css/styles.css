@@ -9,7 +9,8 @@
 
 .picture-container{
   padding: 0px !important;
-  width: 800px;
+  margin: 0px !important;
+  border: 0px !important;
 }
 
 #actioncall .jumbotron {
@@ -103,18 +104,5 @@ body {
 
 #why .item p {
   color:#64927c;
-}
-
-* {box-sizing:border-box}
-
-/* .picture-container {
-  max-width: 800px;
-  max-height: 200px;
-} */
-
-
-
-.active, .dot:hover {
-  background-color: #717171;
 }
 
