@@ -203,6 +203,7 @@ namespace BuffteksWebsite.Controllers
             //create and prepare ViewModel
             EditProjectDetailViewModel epdvm = new EditProjectDetailViewModel
             {
+                ProjectID = project.ID,
                 TheProject = project,
                 ProjectClientsList = clientsSelectList,
                 ProjectMembersList = membersSelectList
@@ -218,8 +219,17 @@ namespace BuffteksWebsite.Controllers
         
         public async Task<IActionResult> AddConfirmed(EditProjectDetailViewModel model)
         {
-            var participant = await _context.Members.SingleOrDefaultAsync(m => m.ID == model.SelectedID);
-            _context.Members.Add(participant);
+            var projectAddedTo = await _context.Projects.SingleOrDefaultAsync(Pro => Pro.ID == model.ProjectID);
+            var participantToAdd = await _context.Members.SingleOrDefaultAsync(m => m.ID == model.SelectedID);
+
+            ProjectRoster dude = new ProjectRoster{
+                ProjectID = projectAddedTo.ID,
+                Project = projectAddedTo,
+                ProjectParticipantID = participantToAdd.ID,
+                ProjectParticipant = participantToAdd
+            };
+
+            await _context.ProjectRoster.AddAsync(dude);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
  

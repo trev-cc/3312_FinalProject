@@ -12,6 +12,7 @@
     <div class="col-md-4">  
         <form asp-controller="Projects" asp-action="EditProjectParticipants" method="post">
             <div class="form-group">
+                <input type+"hidden" asp-for="ProjectID"/>
                 <label asp-for="SelectedID" class="control-label">Select from Clients</label>
                 <select asp-for="SelectedID" asp-items="Model.ProjectClientsList"></select> 
             </div>
@@ -21,6 +22,7 @@
         </form>
         <form asp-controller="Projects" asp-action="EditProjectParticipants" method="post">
             <div class="form-group">
+                <input type+"hidden" asp-for="ProjectID"/>
                 <label asp-for="SelectedID" class="control-label">Select from Members</label>
                 <select asp-for="SelectedID" asp-items="Model.ProjectMembersList"></select>               
             </div>
